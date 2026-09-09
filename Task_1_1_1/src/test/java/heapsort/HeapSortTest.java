@@ -57,5 +57,9 @@ class HeapSortTest {
         HeapSort.heapSort(input);
         assertArrayEquals(expected, input);
     }
-
+    @Test
+    void testMain(){
+        Main main = new Main();
+        Main.main(new String[]{});
+    }
 }
