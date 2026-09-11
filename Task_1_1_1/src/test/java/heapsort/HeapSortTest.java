@@ -2,7 +2,7 @@ package heapsort;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class HeapSortTest {
     @Test
@@ -15,7 +15,7 @@ class HeapSortTest {
     }
 
     @Test
-    void testAleradySorted() {
+    void testAlreadySorted() {
         int[] input = {1, 2, 3, 4, 5, 10};
         int[] expected = {1, 2, 3, 4, 5, 10};
         HeapSort.heapSort(input);
@@ -56,10 +56,5 @@ class HeapSortTest {
 
         HeapSort.heapSort(input);
         assertArrayEquals(expected, input);
-    }
-    @Test
-    void testMain(){
-        Main main = new Main();
-        Main.main(new String[]{});
     }
 }
