@@ -1,5 +1,5 @@
 /**
- * class for a card
+ * class for a card.
  */
 public class Card {
     private final Rank rank;

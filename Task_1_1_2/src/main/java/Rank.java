@@ -1,5 +1,5 @@
 /**
- * Enum for ranks
+ * Enum for ranks.
  */
 public enum Rank {
     TWO(2, "2"), THREE(3, "3"), FOUR(4, "4"), FIVE(5, "5"),

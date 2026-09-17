@@ -1,5 +1,5 @@
 /**
- * Enum for suits
+ * Enum for suits.
  */
 public enum Suit {
     HEARTS("Черви"), DIAMONDS("Бубны"), CLUBS("Трефы"), SPADES("Пики");

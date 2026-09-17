@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 /**
- * the main class for the Black Jack game
+ * the main class for the Black Jack game.
  */
 public class BlackjackGame {
     private final Scanner scanner = new Scanner(System.in);
@@ -10,7 +10,7 @@ public class BlackjackGame {
     private Player player;
 
     /**
-     * a method to start the game
+     * a method to start the game.
      */
     public void start() {
         System.out.println("Добро пожаловать в Блэкджек!");

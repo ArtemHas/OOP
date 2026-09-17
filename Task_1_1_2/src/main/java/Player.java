@@ -1,5 +1,5 @@
 /**
- * Class for the Player
+ * Class for the Player.
  */
 public class Player extends Participant {
     private int balance;

@@ -3,7 +3,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * All cards left
+ * All cards left.
  */
 public class Shoe {
     private final int numberOfDecks;
@@ -18,7 +18,7 @@ public class Shoe {
     }
 
     /**
-     * clearing the current shoe, reshuffling
+     * clearing the current shoe, reshuffling.
      */
     public void resetAndShuffle() {
         cards.clear();
@@ -33,7 +33,7 @@ public class Shoe {
     }
 
     /**
-     * @return a card that dealer took from the top of the shoe
+     * @return a card that dealer took from the top of the shoe.
      */
     public Card dealCard() {
         if (cards.isEmpty()) {
@@ -43,14 +43,14 @@ public class Shoe {
     }
 
     /**
-     * @return true or false whether the shoe need to be reshuffled
+     * @return true or false whether the shoe need to be reshuffled.
      */
     public boolean needsReshuffle() {
         return cards.size() <= reshuffleThreshold;
     }
 
     /**
-     * @return the amount of cards left
+     * @return the amount of cards left.
      */
     public int getRemainingCards() {
         return cards.size();
