@@ -15,6 +15,11 @@ public enum Rank {
         this.name = name;
     }
 
-    public int getValue() { return value; }
-    public String getName() { return name; }
+    public int getValue() {
+        return value;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

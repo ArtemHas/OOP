@@ -4,7 +4,7 @@
 public class Player extends Participant {
     private int balance;
 
-    public Player( int balance) {
+    public Player(int balance) {
         this.balance = balance;
     }
 

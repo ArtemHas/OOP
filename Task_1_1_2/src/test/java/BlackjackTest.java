@@ -5,19 +5,20 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class BlackjackTest {
     private Player player;
     private Dealer dealer;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         player = new Player(10000);
         dealer = new Dealer();
     }
 
     @Test
     @DisplayName("Простой подсчет очков без Тузов")
-    void testSimpleScoresWithoutAces(){
+    void testSimpleScoresWithoutAces() {
         player.addCard(new Card(Rank.TEN, Suit.SPADES));
         player.addCard(new Card(Rank.SEVEN, Suit.HEARTS));
 

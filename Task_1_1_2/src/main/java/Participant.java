@@ -9,6 +9,7 @@ public abstract class Participant {
 
     /**
      * a method to add a Card objects to the cards List
+     *
      * @param card that we want to add
      */
     public void addCard(Card card) {
