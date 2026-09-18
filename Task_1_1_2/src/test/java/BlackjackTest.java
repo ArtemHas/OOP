@@ -2,6 +2,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BlackjackTest {
@@ -198,6 +201,27 @@ public class BlackjackTest {
         assertEquals("Король", Rank.KING.getName());
         assertEquals(10, Rank.KING.getValue());
     }
+    @Test
+    @DisplayName("Симуляция полного цикла игры BlackjackGame")
+    void testBlackjackGameFlow() {
+        // Простой сценарий: поставил 100, нажал 0 (хватит), нажал 0 (выйти)
+        String simulatedInput = "100\n" // Ставка
+                + "0\n"                 // Остановиться (Stand)
+                + "0\n";                // Выйти из игры (0)
+
+        InputStream originalSystemIn = System.in;
+
+        try {
+            System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+            BlackjackGame game = new BlackjackGame();
+            assertDoesNotThrow(() -> game.start());
+
+        } finally {
+            System.setIn(originalSystemIn);
+        }
+    }
+
 
 }
 

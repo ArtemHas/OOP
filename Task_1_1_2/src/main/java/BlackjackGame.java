@@ -45,7 +45,6 @@ public class BlackjackGame {
                         + player.getBalance() + " руб.");
                 break;
             }
-
             roundNumber++;
         }
     }
