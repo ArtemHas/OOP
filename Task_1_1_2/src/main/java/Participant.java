@@ -48,6 +48,7 @@ public abstract class Participant {
     }
 
     /**
+     * checks if the sum of ranks is more than 21.
      * @return true of false whether the getValue is greater than 21.
      */
     public boolean isBust() {
@@ -55,6 +56,7 @@ public abstract class Participant {
     }
 
     /**
+     * gets the list of cards of the dealer or the player.
      * @return the list of cards.
      */
     public List<Card> getCards() {
@@ -62,6 +64,7 @@ public abstract class Participant {
     }
 
     /**
+     * checks if the cards combination is Black Jack.
      * @return true of false whether it is Black Jack.
      */
     public boolean isBlackjack() {

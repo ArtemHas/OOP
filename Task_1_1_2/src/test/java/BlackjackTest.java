@@ -2,9 +2,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BlackjackTest {
     private Player player;
@@ -130,6 +128,16 @@ public class BlackjackTest {
     }
 
     @Test
+    @DisplayName("getVisibleCard возвращает первую карту")
+    void testVisibleCard() {
+        Card firstCard = new Card(Rank.KING, Suit.DIAMONDS);
+        dealer.addCard(firstCard);
+        dealer.addCard(new Card(Rank.TWO, Suit.CLUBS));
+
+        assertEquals(firstCard, dealer.getVisibleCard());
+    }
+
+    @Test
     @DisplayName("В 6 колодах ровно 312 карт")
     void testInitialShoeSize() {
         Shoe shoe = new Shoe(6);
@@ -148,9 +156,49 @@ public class BlackjackTest {
     @Test
     @DisplayName("Порог перетасовки срабатывает при малом количестве карт")
     void testReshuffleThreshold() {
-        Shoe shoe = new Shoe(1); // 52 карты (порог 60)
+        Shoe shoe = new Shoe(1);
         assertTrue(shoe.needsReshuffle());
     }
+
+    @Test
+    @DisplayName("Проверка работы с балансом игрока")
+    void testPlayerBalanceOperations() {
+        Player p = new Player(1000);
+
+        assertEquals(1000, p.getBalance());
+
+        // Проверяем пополнение баланса
+        p.addBalance(500);
+        assertEquals(1500, p.getBalance());
+
+        // Проверяем списание баланса
+        p.deductBalance(300);
+        assertEquals(1200, p.getBalance());
+    }
+
+    @Test
+    @DisplayName("Проверка методов класса Card и красивого вывода toString")
+    void testCardMethodsAndToString() {
+        Card card = new Card(Rank.ACE, Suit.SPADES);
+
+        assertEquals(Rank.ACE, card.getRank());
+
+        // Проверяем вызов toString
+        String text = card.toString();
+        assertNotNull(text);
+        assertTrue(text.contains("Туз"));
+        assertTrue(text.contains("Пики"));
+        assertTrue(text.contains("11"));
+    }
+    @Test
+    @DisplayName("Проверка методов у Enum Rank и Suit")
+    void testEnumsCoverage() {
+        // Проверяем геттеры ранга и масти
+        assertEquals("Червы", Suit.HEARTS.getName());
+        assertEquals("Король", Rank.KING.getName());
+        assertEquals(10, Rank.KING.getValue());
+    }
+
 }
 
 
