@@ -142,7 +142,8 @@ public class BlackjackGame {
 
     private int askForBet() {
         while (true) {
-            System.out.print("\nСделайте ставку (минимум 100, максимум " + player.getBalance() + "): ");
+            System.out.print("\nСделайте ставку (минимум 100, максимум "
+                    + player.getBalance() + "): ");
             try {
                 int bet = Integer.parseInt(scanner.nextLine());
                 if (bet >= 100 && bet <= player.getBalance()) {

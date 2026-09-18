@@ -33,7 +33,7 @@ public class Shoe {
     }
 
     /**
-     * a method to deal a card
+     * a method to deal a card.
      *
      * @return a card that dealer took from the top of the shoe.
      */
@@ -45,7 +45,7 @@ public class Shoe {
     }
 
     /**
-     * checks if the shoe needs a reshuffle
+     * checks if the shoe needs a reshuffle.
      *
      * @return true or false whether the shoe need to be reshuffled.
      */
