@@ -33,6 +33,8 @@ public class Shoe {
     }
 
     /**
+     * a method to deal a card
+     *
      * @return a card that dealer took from the top of the shoe.
      */
     public Card dealCard() {
@@ -43,6 +45,8 @@ public class Shoe {
     }
 
     /**
+     * checks if the shoe needs a reshuffle
+     *
      * @return true or false whether the shoe need to be reshuffled.
      */
     public boolean needsReshuffle() {
@@ -50,6 +54,8 @@ public class Shoe {
     }
 
     /**
+     * gets the amount of cards left
+     *
      * @return the amount of cards left.
      */
     public int getRemainingCards() {

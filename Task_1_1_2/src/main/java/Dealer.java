@@ -4,6 +4,7 @@
 public class Dealer extends Participant {
     /**
      * gets the first cart of the dealer.
+     *
      * @return the first open card that the dealer has.
      */
     public Card getVisibleCard() {
@@ -12,6 +13,7 @@ public class Dealer extends Participant {
 
     /**
      * checks if the dealer must take another card.
+     *
      * @return true of false in case the dealer should take another card.
      */
     public boolean shouldHit() {

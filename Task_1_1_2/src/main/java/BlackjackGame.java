@@ -37,10 +37,12 @@ public class BlackjackGame {
                 shoe.resetAndShuffle();
             }
 
-            System.out.print("\nХотите сыграть следующий раунд? (0 + enter - выйти, enter - продолжить): ");
+            System.out.print("\nХотите сыграть следующий раунд?"
+                    + "(0 + enter - выйти, enter - продолжить): ");
             String choice = scanner.nextLine();
             if (choice.equals("0")) {
-                System.out.println("\nСпасибо за игру. Ваш финальный выигрыш: " + player.getBalance() + " руб.");
+                System.out.println("\nСпасибо за игру. Ваш финальный выигрыш: "
+                        + player.getBalance() + " руб.");
                 break;
             }
 
@@ -60,8 +62,10 @@ public class BlackjackGame {
         player.addCard(shoe.dealCard());
         dealer.addCard(shoe.dealCard());
 
-        System.out.println("\nВаши карты: " + player.getCards() + " => " + player.getValue());
-        System.out.println("Открытая карта дилера: " + dealer.getVisibleCard());
+        System.out.println("\nВаши карты: " + player.getCards()
+                + " => " + player.getValue());
+        System.out.println("Открытая карта дилера: "
+                + dealer.getVisibleCard());
 
         if (player.isBlackjack()) {
             if (dealer.isBlackjack()) {
@@ -69,7 +73,8 @@ public class BlackjackGame {
                 player.addBalance(bet);
             } else {
                 int winAmount = (int) (bet * 2.5);
-                System.out.println("\nБЛЭКДЖЕК! Вы выиграли " + winAmount + " руб. (выплата 3 к 2)!");
+                System.out.println("\nБЛЭКДЖЕК! Вы выиграли "
+                        + winAmount + " руб. (выплата 3 к 2)!");
                 player.addBalance(winAmount);
             }
             return;
@@ -84,10 +89,12 @@ public class BlackjackGame {
                 player.addCard(card);
 
                 System.out.println("Вы открыли карту: " + card);
-                System.out.println("Ваши карты: " + player.getCards() + " => " + player.getValue());
+                System.out.println("Ваши карты: " + player.getCards()
+                        + " => " + player.getValue());
 
                 if (player.isBust()) {
-                    System.out.println("\nПеребор! Вы набрали " + player.getValue() + " очков и проиграли ставку.");
+                    System.out.println("\nПеребор! Вы набрали "
+                            + player.getValue() + " очков и проиграли ставку.");
                     return;
                 }
 
@@ -96,7 +103,8 @@ public class BlackjackGame {
                     break;
                 }
             } else if (choice.equals("0")) {
-                System.out.println("Вы остановились на " + player.getValue() + " очках.");
+                System.out.println("Вы остановились на "
+                        + player.getValue() + " очках.");
                 break;
             } else {
                 System.out.println("Неверный ввод! Введите только 1 или 0.");
@@ -104,25 +112,31 @@ public class BlackjackGame {
         }
 
         System.out.println("\n--- Ход дилера ---");
-        System.out.println("Все карты дилера: " + dealer.getCards() + " => " + dealer.getValue());
+        System.out.println("Все карты дилера: " + dealer.getCards()
+                + " => " + dealer.getValue());
 
         while (dealer.shouldHit()) {
             Card card = shoe.dealCard();
             dealer.addCard(card);
             System.out.println("Дилер берет карту: " + card);
-            System.out.println("Карты дилера: " + dealer.getCards() + " => " + dealer.getValue());
+            System.out.println("Карты дилера: " + dealer.getCards()
+                    + " => " + dealer.getValue());
         }
 
         if (dealer.isBust()) {
-            System.out.println("\nУ дилера перебор (" + dealer.getValue() + " очков)! ВЫ ВЫИГРАЛИ!");
+            System.out.println("\nУ дилера перебор ("
+                    + dealer.getValue() + " очков)! ВЫ ВЫИГРАЛИ!");
             player.addBalance(bet * 2);
         } else if (player.getValue() > dealer.getValue()) {
-            System.out.println("\nВЫ ВЫИГРАЛИ! (" + player.getValue() + " против " + dealer.getValue() + " у дилера)");
+            System.out.println("\nВЫ ВЫИГРАЛИ! (" + player.getValue()
+                    + " против " + dealer.getValue() + " у дилера)");
             player.addBalance(bet * 2);
         } else if (player.getValue() < dealer.getValue()) {
-            System.out.println("\nДилер выиграл (" + dealer.getValue() + " против " + player.getValue() + " у вас).");
+            System.out.println("\nДилер выиграл (" + dealer.getValue()
+                    + " против " + player.getValue() + " у вас).");
         } else {
-            System.out.println("\nНичья (" + player.getValue() + " = " + dealer.getValue() + ")! Ставка возвращается.");
+            System.out.println("\nНичья (" + player.getValue() + " = "
+                    + dealer.getValue() + ")! Ставка возвращается.");
             player.addBalance(bet);
         }
     }

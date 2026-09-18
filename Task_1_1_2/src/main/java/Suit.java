@@ -2,7 +2,7 @@
  * Enum for suits.
  */
 public enum Suit {
-    HEARTS("Черви"), DIAMONDS("Бубны"), CLUBS("Трефы"), SPADES("Пики");
+    HEARTS("Червы"), DIAMONDS("Бубны"), CLUBS("Трефы"), SPADES("Пики");
 
     private final String name;
 
