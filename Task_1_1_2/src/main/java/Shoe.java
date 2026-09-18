@@ -54,7 +54,7 @@ public class Shoe {
     }
 
     /**
-     * gets the amount of cards left
+     * gets the amount of cards left.
      *
      * @return the amount of cards left.
      */
