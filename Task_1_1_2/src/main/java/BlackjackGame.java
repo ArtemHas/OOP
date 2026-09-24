@@ -10,15 +10,16 @@ public class BlackjackGame {
     private final Player player = new Player(10000);
 
     /**
-     * a constructor for the class BlackJackGame
+     * a constructor for the class BlackJackGame.
      *
-     * @param scanner
-     * @param shoe
+     * @param scanner the scanner
+     * @param shoe    the shoe with the set amount of decks
      */
     public BlackjackGame(Scanner scanner, Shoe shoe) {
         this.scanner = scanner;
         this.shoe = shoe;
     }
+
     /**
      * a method to start the game.
      */
@@ -123,7 +124,7 @@ public class BlackjackGame {
         System.out.println("Все карты дилера: " + dealer.getCards()
                 + " => " + dealer.getValue());
 
-        if(dealer.isBlackjack()){
+        if (dealer.isBlackjack()) {
             System.out.println("У дилера блэкджек! Дилер выиграл.");
             return;
         }

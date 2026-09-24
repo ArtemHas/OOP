@@ -5,9 +5,9 @@ import java.util.Scanner;
  */
 public class Main {
     /**
-     * The main entry point of the application
+     * The main entry point of the application.
      *
-     * @param args command-line arguments
+     * @param args command-line arguments.
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

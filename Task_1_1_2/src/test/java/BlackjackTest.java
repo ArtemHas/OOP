@@ -1,7 +1,4 @@
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.Scanner;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -202,6 +199,7 @@ public class BlackjackTest {
         assertTrue(text.contains("Пики"));
         assertTrue(text.contains("11"));
     }
+
     @Test
     @DisplayName("Проверка методов у Enum Rank и Suit")
     void testEnumsCoverage() {
@@ -210,6 +208,7 @@ public class BlackjackTest {
         assertEquals("Король", Rank.KING.getName());
         assertEquals(10, Rank.KING.getValue());
     }
+
     @Test
     @DisplayName("Симуляция полного цикла игры BlackjackGame")
     void testBlackjackGameFlow() {
