@@ -210,12 +210,51 @@ public class BlackjackTest {
     }
 
     @Test
-    @DisplayName("Симуляция полного цикла игры BlackjackGame")
-    void testBlackjackGameFlow() {
-        Scanner testScanner = new Scanner("100\n0\n0\n");
-        Shoe testShoe = new Shoe(6);
+    @DisplayName("Тест ошибок ввода ставки и неверных команд")
+    void testGameInputValidation() {
+        // Проверяем: буквы в ставке -> мало денег -> много денег -> ставка 100 ->
+        // неверная команда хода -> взять карту (1) -> хватит (0) -> выход (0)
+        String input = "abc\n"     // Ошибка: не число
+                + "10\n"           // Ошибка: ставка меньше 100
+                + "999999\n"       // Ошибка: ставка больше баланса
+                + "100\n"          // Корректная ставка
+                + "bad_choice\n"   // Ошибка: неверная команда
+                + "1\n"            // Взять карту (Hit)
+                + "0\n"            // Хватит (Stand)
+                + "0\n";           // Выход из игры (0)
 
-        BlackjackGame game = new BlackjackGame(testScanner, testShoe);
+        Scanner scanner = new Scanner(input);
+        Shoe shoe = new Shoe(6);
+        BlackjackGame game = new BlackjackGame(scanner, shoe);
+
+        assertDoesNotThrow(() -> game.start());
+    }
+
+    @Test
+    @DisplayName("Тест перебора у игрока и полного банкротства")
+    void testPlayerBustAndBankrupt() {
+        // Ставим ва-банк (10000) и добираем карты (1), пока не сгорим:
+        String input = "10000\n"
+                + "1\n1\n1\n1\n1\n1\n1\n";
+
+        Scanner scanner = new Scanner(input);
+        Shoe shoe = new Shoe(6);
+        BlackjackGame game = new BlackjackGame(scanner, shoe);
+
+        // Игра зафиксирует перебор, обнулит баланс и сама завершится
+        assertDoesNotThrow(() -> game.start());
+    }
+
+    @Test
+    @DisplayName("Тест перетасовки колоды при подрезной карте")
+    void testShoeReshuffleInGame() {
+        String input = "100\n0\n0\n";
+
+        Scanner scanner = new Scanner(input);
+        // Башмак из 1 колоды (52 карты) гарантированно вызовет блок с shuffle
+        Shoe smallShoe = new Shoe(1);
+        BlackjackGame game = new BlackjackGame(scanner, smallShoe);
+
         assertDoesNotThrow(() -> game.start());
     }
 
