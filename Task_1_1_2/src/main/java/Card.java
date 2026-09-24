@@ -16,6 +16,7 @@ public class Card {
 
     @Override
     public String toString() {
-        return rank.getName() + " " + suit.getName() + " (" + rank.getValue() + ")";
+        String valueStr = (rank == Rank.ACE) ? "1/11" : String.valueOf(rank.getValue());
+        return rank.getName() + " " + suit.getName() + " (" + valueStr + ")";
     }
 }

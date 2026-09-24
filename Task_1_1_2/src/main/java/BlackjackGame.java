@@ -4,17 +4,26 @@ import java.util.Scanner;
  * the main class for the Black Jack game.
  */
 public class BlackjackGame {
-    private final Scanner scanner = new Scanner(System.in);
-    private final Shoe shoe = new Shoe(6);
+    private final Scanner scanner;
+    private final Shoe shoe;
     private final Dealer dealer = new Dealer();
-    private Player player;
+    private final Player player = new Player(10000);
 
+    /**
+     * a constructor for the class BlackJackGame
+     *
+     * @param scanner
+     * @param shoe
+     */
+    public BlackjackGame(Scanner scanner, Shoe shoe) {
+        this.scanner = scanner;
+        this.shoe = shoe;
+    }
     /**
      * a method to start the game.
      */
     public void start() {
         System.out.println("Добро пожаловать в Блэкджек!");
-        this.player = new Player(10000);
 
         int roundNumber = 1;
 
@@ -113,6 +122,11 @@ public class BlackjackGame {
         System.out.println("\n--- Ход дилера ---");
         System.out.println("Все карты дилера: " + dealer.getCards()
                 + " => " + dealer.getValue());
+
+        if(dealer.isBlackjack()){
+            System.out.println("У дилера блэкджек! Дилер выиграл.");
+            return;
+        }
 
         while (dealer.shouldHit()) {
             Card card = shoe.dealCard();

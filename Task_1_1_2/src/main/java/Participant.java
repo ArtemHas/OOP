@@ -1,11 +1,12 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * an abstract class that defines the functionality of the player and the dealer.
  */
 public abstract class Participant {
-    protected final List<Card> cards = new ArrayList<>();
+    private final List<Card> cards = new ArrayList<>();
 
     /**
      * a method to add a Card objects to the cards List.
@@ -62,7 +63,7 @@ public abstract class Participant {
      * @return the list of cards.
      */
     public List<Card> getCards() {
-        return cards;
+        return Collections.unmodifiableList(cards);
     }
 
     /**

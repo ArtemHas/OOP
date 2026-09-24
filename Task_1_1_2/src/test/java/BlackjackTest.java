@@ -1,5 +1,7 @@
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Scanner;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -211,22 +213,11 @@ public class BlackjackTest {
     @Test
     @DisplayName("Симуляция полного цикла игры BlackjackGame")
     void testBlackjackGameFlow() {
-        // Простой сценарий: поставил 100, нажал 0 (хватит), нажал 0 (выйти)
-        String simulatedInput = "100\n" // Ставка
-                + "0\n"                 // Остановиться (Stand)
-                + "0\n";                // Выйти из игры (0)
+        Scanner testScanner = new Scanner("100\n0\n0\n");
+        Shoe testShoe = new Shoe(6);
 
-        InputStream originalSystemIn = System.in;
-
-        try {
-            System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-
-            BlackjackGame game = new BlackjackGame();
-            assertDoesNotThrow(() -> game.start());
-
-        } finally {
-            System.setIn(originalSystemIn);
-        }
+        BlackjackGame game = new BlackjackGame(testScanner, testShoe);
+        assertDoesNotThrow(() -> game.start());
     }
 
 }
