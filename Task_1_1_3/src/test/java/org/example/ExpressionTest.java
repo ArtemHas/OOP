@@ -15,7 +15,12 @@ public class ExpressionTest {
         assertEquals(5, number.eval("x = 10"));
         assertEquals("0", number.derivative("x").toString());
     }
+    @Test
+    void numberPrintTest() {
+        Expression number = new Number(5);
 
+        number.print();
+    }
     @Test
     void variableDerivativeTest() {
         Expression x = new Variable("x");

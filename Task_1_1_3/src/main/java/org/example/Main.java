@@ -1,7 +1,15 @@
 package org.example;
 
+/**
+ * The main class.
+ */
 public class Main {
 
+    /**
+     * The entry point of the program.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
         Expression e = new Add(
