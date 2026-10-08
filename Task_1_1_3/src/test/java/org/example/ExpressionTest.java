@@ -22,6 +22,11 @@ public class ExpressionTest {
         number.print();
     }
     @Test
+    void variablePrintTest() {
+        Expression e = new Variable("x");
+        e.print();
+    }
+    @Test
     void variableDerivativeTest() {
         Expression x = new Variable("x");
         Expression y = new Variable("y");
