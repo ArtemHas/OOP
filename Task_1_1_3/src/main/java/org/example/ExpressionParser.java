@@ -1,8 +1,8 @@
 package org.example;
 
-/** 
- * Parses expressions enclosed in parentheses. 
-*/
+/**
+ * Parses expressions enclosed in parentheses.
+ */
 public final class ExpressionParser {
     private final String source;
     private int position;
@@ -37,7 +37,7 @@ public final class ExpressionParser {
         char current = source.charAt(position);
         if (current == '(') {
             position++;
-            Expression left = parseExpression();
+            final Expression left = parseExpression();
             if (position == source.length()) {
                 throw error("Expected an operator");
             }

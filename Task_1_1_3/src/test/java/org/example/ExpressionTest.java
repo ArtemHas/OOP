@@ -1,10 +1,13 @@
 package org.example;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.Test;
+
+/**
+ * Tests mathematical expressions.
+ */
 public class ExpressionTest {
 
     @Test
@@ -15,17 +18,20 @@ public class ExpressionTest {
         assertEquals(5, number.eval("x = 10"));
         assertEquals("0", number.derivative("x").toString());
     }
+
     @Test
     void numberPrintTest() {
         Expression number = new Number(5);
 
         number.print();
     }
+
     @Test
     void variablePrintTest() {
         Expression e = new Variable("x");
         e.print();
     }
+
     @Test
     void variableDerivativeTest() {
         Expression x = new Variable("x");

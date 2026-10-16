@@ -1,4 +1,5 @@
 package org.example;
+
 /**
  * Represents addition of two expressions.
  */

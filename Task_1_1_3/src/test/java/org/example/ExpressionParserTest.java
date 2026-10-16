@@ -1,10 +1,13 @@
 package org.example;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.Test;
+
+/**
+ * Tests expression parsing.
+ */
 class ExpressionParserTest {
     @Test
     void parsesParenthesizedOperations() {
@@ -39,10 +42,14 @@ class ExpressionParserTest {
 
     @Test
     void rejectsInvalidInputAndOperationsWithoutParentheses() {
-        for (String source : new String[]{"", " ", "1 + 2", "(1 + 2", "1 2", "x)",
-                "(2 ** 3)", "()", "@", "2147483648", "-2147483649", "(x)",
-                "(1 + 2 * 3)", "-(x + 1)", "_x", "x_1", "x1", "abc2"}) {
-            assertThrows(IllegalArgumentException.class, () -> ExpressionParser.parse(source), source);
+        String[] invalidExpressions = {
+            "", " ", "1 + 2", "(1 + 2", "1 2", "x)",
+            "(2 ** 3)", "()", "@", "2147483648", "-2147483649", "(x)",
+            "(1 + 2 * 3)", "-(x + 1)", "_x", "x_1", "x1", "abc2"
+        };
+        for (String source : invalidExpressions) {
+            assertThrows(IllegalArgumentException.class,
+                    () -> ExpressionParser.parse(source), source);
         }
         assertThrows(IllegalArgumentException.class, () -> ExpressionParser.parse(null));
     }
