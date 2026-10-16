@@ -24,7 +24,7 @@ public class Div extends Expression {
      */
     @Override
     public void print() {
-        System.out.println(toString());
+        System.out.println(this);
     }
 
     /**
