@@ -9,6 +9,11 @@ import java.util.List;
  */
 public class IncidenceMatrixGraph extends AbstractGraph {
 
+    private static final int NOT_INCIDENT = 0;
+    private static final int EDGE_SOURCE = -1;
+    private static final int EDGE_TARGET = 1;
+    private static final int SELF_LOOP = 2;
+
     private final List<Integer> vertices = new ArrayList<>();
     private final List<int[]> columns = new ArrayList<>();
 
@@ -40,7 +45,7 @@ public class IncidenceMatrixGraph extends AbstractGraph {
             return;
         }
         for (int edge = columns.size() - 1; edge >= 0; edge--) {
-            if (columns.get(edge)[index] != 0) {
+            if (columns.get(edge)[index] != NOT_INCIDENT) {
                 columns.remove(edge);
             }
         }
@@ -71,10 +76,10 @@ public class IncidenceMatrixGraph extends AbstractGraph {
         }
         int[] column = new int[vertices.size()];
         if (sourceIndex == targetIndex) {
-            column[sourceIndex] = 2;
+            column[sourceIndex] = SELF_LOOP;
         } else {
-            column[sourceIndex] = -1;
-            column[targetIndex] = 1;
+            column[sourceIndex] = EDGE_SOURCE;
+            column[targetIndex] = EDGE_TARGET;
         }
         columns.add(column);
     }
@@ -152,11 +157,11 @@ public class IncidenceMatrixGraph extends AbstractGraph {
         List<Integer> neighbors = new ArrayList<>();
 
         for (int[] column : columns) {
-            if (column[index] == 2) {
+            if (column[index] == SELF_LOOP) {
                 neighbors.add(vertex);
-            } else if (column[index] == -1) {
+            } else if (column[index] == EDGE_SOURCE) {
                 for (int row = 0; row < vertices.size(); row++) {
-                    if (column[row] == 1) {
+                    if (column[row] == EDGE_TARGET) {
                         neighbors.add(vertices.get(row));
                         break;
                     }
@@ -179,10 +184,10 @@ public class IncidenceMatrixGraph extends AbstractGraph {
         for (int edge = 0; edge < columns.size(); edge++) {
             int[] column = columns.get(edge);
             if (source == target) {
-                if (column[source] == 2) {
+                if (column[source] == SELF_LOOP) {
                     return edge;
                 }
-            } else if (column[source] == -1 && column[target] == 1) {
+            } else if (column[source] == EDGE_SOURCE && column[target] == EDGE_TARGET) {
                 return edge;
             }
         }
