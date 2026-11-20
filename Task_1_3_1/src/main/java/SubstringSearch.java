@@ -101,3 +101,4 @@ public final class SubstringSearch {
         return Character.toCodePoint((char) first, (char) second);
     }
 }
+ 
